@@ -10,7 +10,6 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
-// API для генерації
 app.post('/api/generate', (req, res) => {
     try {
         const { 
@@ -19,7 +18,6 @@ app.post('/api/generate', (req, res) => {
             grid, thickness, legendPos, legendLabel
         } = req.body;
 
-        // 1. Обробка кольору
         const rawColor = color || '#0000ff';
         const cleanHex = rawColor.replace('#', '').toUpperCase();
 
@@ -35,7 +33,6 @@ app.post('/api/generate', (req, res) => {
         if (grid && grid !== 'none') pgf += `        grid=${grid},\n`;
         if (legendLabel && legendPos) pgf += `        legend pos=${legendPos},\n`;
 
-        // Специфіка стовпчиків
         if (type === 'bar') {
             pgf += `        ybar,\n`;
             pgf += `        bar width=15pt,\n`;
@@ -45,12 +42,10 @@ app.post('/api/generate', (req, res) => {
         pgf += `        width=12cm,\n`;
         pgf += `    ]\n`;
 
-        // 3. Стилі лінії
-        // ВИПРАВЛЕНО: Заливка (fill) додається ТІЛЬКИ для стовпчиків
-        let plotOptions = `color=myGraphColor`; // Базовий колір лінії
+        let plotOptions = `color=myGraphColor`;
         
         if (type === 'bar') {
-            plotOptions += `, fill=myGraphColor!50`; // Заливка тільки для барів
+            plotOptions += `, fill=myGraphColor!50`;
         }
         
         if (thickness && thickness !== 'normal') plotOptions += `, ${thickness}`;

@@ -62,7 +62,6 @@ function toggleModal() {
     document.getElementById('about-modal').classList.toggle('active');
 }
 
-// --- МАТЕМАТИЧНІ ФУНКЦІЇ ---
 function calculateFunction() {
     const expr = document.getElementById('func-input').value;
     const xMin = parseFloat(document.getElementById('x-min').value);
@@ -74,7 +73,6 @@ function calculateFunction() {
         return;
     }
 
-    // ДОДАНО ПЕРЕВІРКУ: Від не може бути більше До
     if (xMin > xMax) {
         alert('Початкове значення (Від) не може бути більшим за кінцеве (До)!');
         return;
@@ -82,9 +80,9 @@ function calculateFunction() {
 
     try {
         chartData = [];
-        // Використовуємо цикл for з захистом від нескінченності (на випадок дуже малого кроку)
+        
         let count = 0;
-        const maxPoints = 10000; // Ліміт точок для безпеки
+        const maxPoints = 10000;
 
         for (let x = xMin; x <= xMax; x += step) {
             if (count++ > maxPoints) {
@@ -115,7 +113,6 @@ function calculateFunction() {
     }
 }
 
-// --- ЗАВАНТАЖЕННЯ ФУНКЦІЇ ---
 function handleFunctionFileUpload(input) {
     const file = input.files[0];
     if (!file) return;
@@ -153,7 +150,6 @@ function handleFunctionFileUpload(input) {
     input.value = '';
 }
 
-// --- РУЧНЕ ВВЕДЕННЯ ---
 function addPoint() {
     const xIn = document.getElementById('input-x');
     const yIn = document.getElementById('input-y');
@@ -203,7 +199,6 @@ function clearData() {
     updatePreview();
 }
 
-// --- ІМПОРТ ---
 function handleFileUpload(input) {
     const file = input.files[0];
     if (!file) return;
@@ -244,14 +239,12 @@ function handleFileUpload(input) {
     reader.readAsText(file);
 }
 
-// --- ПРЕВ'Ю ---
 function updatePreview() {
     const canvas = document.getElementById('previewCanvas');
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
     
-    // Адаптивні кольори
     const isDark = document.body.classList.contains('dark-mode');
     const txtColor = isDark ? '#f1f5f9' : '#1e293b'; 
     const gridColor = isDark ? '#334155' : '#e2e8f0';
@@ -359,7 +352,6 @@ function getValue(id, def) {
     return el ? el.value : def;
 }
 
-// --- ГЕНЕРАЦІЯ ---
 function submitGeneration() {
     if (chartData.length === 0) {
         alert('Додайте дані!');
