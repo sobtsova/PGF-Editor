@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Результат</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="result-page" style="display:none;"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo"><div class="logo-icon"><i class="fas fa-check"></i></div><span>Готово</span></div>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon" id="theme-icon"></i></button>
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-times"></i>
+                    <span class="nav-text">Закрити</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="result-content">
+            <div class="code-block">
+                <textarea id="pgf-output" class="pgf-textarea" spellcheck="false">% Генерація...</textarea>
+            </div>
+            <div class="actions-panel">
+                <div class="action-card">
+                    <h3>Що далі?</h3>
+                    <p>Ваш код готовий. Ви можете редагувати його зліва, а потім зберегти.</p>
+                    <button onclick="copyToClipboard()" class="btn-action btn-copy"><span><i class="fas fa-copy"></i> Копіювати код</span></button>
+                    <label class="btn-action" style="cursor: pointer; background: var(--input-bg); border: 1px solid var(--border); color: var(--text-main); display: flex; justify-content: center;">
+                        <input type="file" style="display:none;" accept=".pgf,.tex" onchange="loadPGFCode(this)">
+                        <span><i class="fas fa-folder-open" style="margin-right: 1px;"></i> Відкрити .pgf для редагування</span>
+                    </label>
+                    <div class="filename-container">
+                        <label class="filename-label">Назва файлу:</label>
+                        <div class="filename-wrapper">
+                            <input type="text" id="filename-input" value="my_graph" placeholder="my_graph" class="filename-input">
+                            <span class="filename-ext">.pgf</span>
+                        </div>
+                    </div>
+
+                    <button onclick="downloadPGF()" class="btn-action btn-download"><span><i class="fas fa-download"></i> Експорт у файл</span></button>
+                </div>
+                <button onclick="history.back()" class="btn-action back-btn"><i class="fas fa-reply back-btn-icon"></i> Повернутись</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>ІП-34 <span class="footer-highlight">Собцова Софія</span>, Курсова робота 2025</p>
+            <p class="university-text">Національний технічний університет України «Київський політехнічний інститут імені Ігоря Сікорського»</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

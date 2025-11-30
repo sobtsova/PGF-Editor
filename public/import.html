@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Імпорт даних</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="import-page" style="display:none;"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">
+                <i class="fas fa-arrow-left"></i>
+                <span class="nav-text">На головну</span>
+            </a>
+            <div class="logo"><span>Імпорт</span></div>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon" id="theme-icon"></i></button>
+                <button onclick="submitGeneration()" class="btn-primary" id="gen-btn"><i class="fas fa-code"></i> Згенерувати</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="editor-layout">
+            <div class="sidebar">
+                
+                <div class="panel mb-20">
+                    <div class="panel-header">1. Дані точок</div>
+                    <label class="file-upload-area compact">
+                        <input type="file" style="display:none;" accept=".csv,.json" onchange="handleFileUpload(this)">
+                        <div class="upload-icon compact"><i class="fas fa-table"></i></div>
+                        <p class="upload-text">CSV / JSON (Точки)</p>
+                        <div id="file-name" class="file-name-label"></div>
+                    </label>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">2. Функція (JSON)</div>
+                    <label class="file-upload-area compact">
+                        <input type="file" style="display:none;" accept=".json" onchange="handleFunctionFileUpload(this)">
+                        <div class="upload-icon compact"><i class="fas fa-square-root-alt"></i></div>
+                        <p class="upload-text">JSON (Формула)</p>
+                    </label>
+                    <p class="hint-text">
+                        Завантаження файлу функції автоматично перенесе вас до розрахунку.
+                    </p>
+                </div>
+
+                <div class="panel panel-mt">
+                    <div class="panel-header">Таблиця (Точки)</div>
+                    <div id="import-table-container" class="table-container"><p class="empty-table-msg">Дані не завантажені</p></div>
+                </div>
+                
+                <input type="hidden" id="chart-type" value="line"><input type="hidden" id="chart-color" value="#3b82f6">
+                <input type="hidden" id="func-input"><input type="hidden" id="x-min"><input type="hidden" id="x-max"><input type="hidden" id="step">
+            </div>
+
+            <div class="main-content">
+                <div class="preview-header"><span>ПОПЕРЕДНІЙ ПЕРЕГЛЯД</span></div>
+                <div class="canvas-container"><canvas id="previewCanvas"></canvas></div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>ІП-34 <span class="footer-highlight">Собцова Софія</span>, Курсова робота 2025</p>
+            <p class="university-text">Національний технічний університет України «Київський політехнічний інститут імені Ігоря Сікорського»</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

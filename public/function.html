@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Побудова функції</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- MATH.JS ДЛЯ ОБЧИСЛЕНЬ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="function-page" class="hidden"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">
+                <i class="fas fa-arrow-left"></i>
+                <span class="nav-text">На головну</span>
+            </a>
+            <div class="logo"><span>Функція</span></div>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon" id="theme-icon"></i></button>
+                <button onclick="submitGeneration()" class="btn-primary"><i class="fas fa-code"></i> Згенерувати</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="editor-layout">
+            <div class="sidebar">
+                <div class="panel">
+                    <div class="panel-header">1. Формула</div>
+
+                    <div class="form-group">
+                        <label class="form-label">f(x) =</label>
+                        <input type="text" id="func-input" value="sin(x)" placeholder="x^2, sin(x), etc.">
+                    </div>
+                    <div class="input-row">
+                        <div class="w-33"><label class="form-label">Від</label><input type="number" id="x-min" value="-10"></div>
+                        <div class="w-33"><label class="form-label">До</label><input type="number" id="x-max" value="10"></div>
+                        <div class="w-33"><label class="form-label">Крок</label><input type="number" id="step" value="0.5"></div>
+                    </div>
+                    <button onclick="calculateFunction()" class="btn-primary w-full flex-center">Розрахувати</button>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">2. Налаштування</div>
+                    <div class="form-group"><label>Заголовок</label><input type="text" id="chart-title" value="Графік функції" oninput="updatePreview()"></div>
+                    <div class="input-row">
+                        <div class="w-50"><label class="form-label">Сітка</label><select id="grid-type" onchange="updatePreview()"><option value="major">Основна</option><option value="both">Повна</option><option value="none">Немає</option></select></div>
+                        <div class="w-50"><label class="form-label">Товщина</label><select id="line-thickness" onchange="updatePreview()"><option value="normal">Звичайна</option><option value="thick">Товста</option><option value="thin">Тонка</option></select></div>
+                    </div>
+                    <div class="input-row">
+                        <div class="w-50"><label class="form-label">Колір</label><input type="color" id="chart-color" value="#d97706" class="color-input" oninput="updatePreview()"></div>
+                        <div class="w-50"><label class="form-label">Стиль</label><select id="line-style" onchange="updatePreview()"><option value="solid">Суцільна</option><option value="dashed">Пунктирна</option></select></div>
+                    </div>
+                    <input type="hidden" id="axis-x" value="x"><input type="hidden" id="axis-y" value="f(x)"><input type="hidden" id="chart-type" value="line">
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="preview-header"><span>ПОПЕРЕДНІЙ ПЕРЕГЛЯД</span></div>
+                <div class="canvas-container"><canvas id="previewCanvas"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>ІП-34 <span class="footer-highlight">Собцова Софія</span>, Курсова робота 2025</p>
+            <p class="university-text">Національний технічний університет України «Київський політехнічний інститут імені Ігоря Сікорського»</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

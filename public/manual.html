@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Ручне введення</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="manual-page" style="display:none;"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">
+                <i class="fas fa-arrow-left"></i>
+                <span class="nav-text">На головну</span>
+            </a>
+            <div class="logo"><span>Конструктор</span></div>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon" id="theme-icon"></i></button>
+                <button onclick="submitGeneration()" class="btn-primary"><i class="fas fa-code"></i> Згенерувати</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="editor-layout">
+            <div class="sidebar">
+                <div class="panel">
+                    <div class="panel-header">1. Дані</div>
+                    <div class="input-row">
+                        <input type="number" id="input-x" placeholder="X">
+                        <input type="number" id="input-y" placeholder="Y">
+                        <button onclick="addPoint()" class="btn-icon add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table"><thead><tr><th>X</th><th>Y</th><th></th></tr></thead><tbody id="points-body"></tbody></table>
+                    </div>
+                    <div class="clear-btn-container"><button onclick="clearData()" class="clear-btn">Очистити</button></div>
+                </div>
+                <div class="panel">
+                    <div class="panel-header">2. Параметри</div>
+                    <div class="form-group"><label>Заголовок</label><input type="text" id="chart-title" value="Мій графік" oninput="updatePreview()"></div>
+                    <div class="input-row">
+                        <div class="w-50"><label class="form-label">Вісь X</label><input type="text" id="axis-x" value="Час (с)" oninput="updatePreview()"></div>
+                        <div class="w-50"><label class="form-label">Вісь Y</label><input type="text" id="axis-y" value="Значення" oninput="updatePreview()"></div>
+                    </div>
+                    <div class="input-row">
+                        <div class="w-50"><label class="form-label">Тип</label><select id="chart-type" onchange="updatePreview()"><option value="line">Лінійний</option><option value="bar">Стовпчиковий</option><option value="scatter">Точковий</option></select></div>
+                        <div class="w-50"><label class="form-label">Сітка</label><select id="grid-type" onchange="updatePreview()"><option value="major">Основна</option><option value="both">Повна</option><option value="none">Немає</option></select></div>
+                    </div>
+                    <div class="input-row">
+                        <div class="w-50"><label class="form-label">Колір</label><input type="color" id="chart-color" value="#10b981" class="color-input" oninput="updatePreview()"></div>
+                        <div class="w-50"><label class="form-label">Стиль лінії</label><select id="line-style" onchange="updatePreview()"><option value="solid">Суцільна</option><option value="dashed">Пунктирна</option><option value="dotted">Точкова</option></select></div>
+                    </div>
+                    <input type="hidden" id="line-thickness" value="normal">
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="preview-header"><span>ПОПЕРЕДНІЙ ПЕРЕГЛЯД</span></div>
+                <div class="canvas-container"><canvas id="previewCanvas"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>ІП-34 <span class="footer-highlight">Собцова Софія</span>, Курсова робота 2025</p>
+            <p class="university-text">Національний технічний університет України «Київський політехнічний інститут імені Ігоря Сікорського»</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

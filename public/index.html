@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PGF GenService</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo"><div class="logo-icon"><i class="fas fa-layer-group"></i></div><span>PGF GenService</span></div>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon" id="theme-icon"></i></button>
+                <span class="nav-link" onclick="toggleModal()">
+                    <span class="nav-text">Про систему</span>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container hero-section">
+        <h1 class="hero-title">Генератор графіки для LaTeX</h1>
+        <p class="hero-subtitle">Швидке створення професійної векторної графіки PGF/TikZ</p>
+
+        <div class="cards-grid">
+            <a href="manual.html" class="card">
+                <div class="card-icon"><i class="fas fa-pen-nib"></i></div>
+                <h3>Створити вручну</h3>
+                <p>Вводьте координати точок та налаштовуйте вигляд у реальному часі.</p>
+                <span class="card-link">Розпочати <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a href="function.html" class="card">
+                <div class="card-icon"><i class="fas fa-square-root-alt"></i></div>
+                <h3>За функцією</h3>
+                <p>Побудова графіків математичних функцій (sin, cos, x^2) за заданим діапазоном.</p>
+                <span class="card-link">Створити <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a href="import.html" class="card">
+                <div class="card-icon"><i class="fas fa-file-csv"></i></div>
+                <h3>Імпорт з файлу</h3>
+                <p>Завантажте CSV або JSON файл та отримайте код за лічені секунди.</p>
+                <span class="card-link">Завантажити <i class="fas fa-arrow-right"></i></span>
+            </a>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="about-modal" onclick="if(event.target === this) toggleModal()">
+        <div class="modal-content">
+            <button class="modal-close" onclick="toggleModal()"><i class="fas fa-times"></i></button>
+            <div class="modal-info">
+                <h2>Про систему PGF GenService</h2>
+                <p>
+                    <strong>PGF GenService</strong> — це спеціалізований веб-сервіс, розроблений для автоматизації процесу створення векторної графіки у форматі <em>PGF (Portable Graphics Format)</em>. Система орієнтована на користувачів видавничої системи LaTeX, дозволяючи їм інтегрувати високоякісні графіки без необхідності ручного написання складного коду TikZ.
+                </p>
+                <h3 style="margin-top: 15px; font-size: 1.1rem; color: var(--primary);">Основні можливості:</h3>
+                <ul style="list-style: disc; padding-left: 20px; margin-bottom: 15px;">
+                    <li><strong>Гнучкий конструктор:</strong> Ручне введення координат та налаштування стилів (колір, тип лінії, маркери) через інтуїтивний інтерфейс.</li>
+                    <li><strong>Імпорт даних:</strong> Підтримка завантаження великих наборів даних із файлів форматів <code>.csv</code> та <code>.json</code>.</li>
+                    <li><strong>Live Preview:</strong> Попередній перегляд графіків у реальному часі перед генерацією фінального коду.</li>
+                    <li><strong>Експорт:</strong> Миттєва генерація валідного коду для середовища <code>pgfplots</code> з можливістю завантаження файлу.</li>
+                </ul>
+                <hr style="border: 0; border-top: 1px solid var(--border); margin: 20px 0;">
+                <p style="font-size: 0.9rem; color: var(--text-light);">
+                    <strong>Розробник:</strong><br>
+                    Студентка групи ІП-34<br>
+                    <span style="color: var(--text-main); font-weight: bold;">Собцова Софія</span>
+                </p>
+                <p style="font-size: 0.8rem; margin-top: 5px; color: var(--text-light);">
+                    Національний технічний університет України<br>
+                    «Київський політехнічний інститут імені Ігоря Сікорського»<br>
+                    Київ - 2025
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>ІП-34 <span class="footer-highlight">Собцова Софія</span>, Курсова робота 2025</p>
+            <p class="university-text">Національний технічний університет України «Київський політехнічний інститут імені Ігоря Сікорського»</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
