@@ -36,7 +36,6 @@ app.post('/api/generate', (req, res) => {
         if (type === 'bar') {
             pgf += `        ybar,\n`;
             pgf += `        bar width=15pt,\n`;
-            pgf += `        ymin=0,\n`;
         }
         
         pgf += `        width=12cm,\n`;

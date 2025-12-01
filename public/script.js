@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// --- ТЕМА ---
 function initTheme() {
     const savedTheme = localStorage.getItem('theme');
     const icon = document.getElementById('theme-icon');
@@ -99,7 +98,7 @@ function calculateFunction() {
                     return;
                 }
             } catch (e) {
-                console.error(e);
+                alert('Помилка у формулі: ' + e.message);
                 return;
             }
             chartData.push({
